@@ -1,0 +1,65 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.svelte';
+const { title } = Astro.props
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <BaseHead title={title}/>
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+    <Footer client:load />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/fonts.css';
+  @import '../styles/colors.css';
+  @import '../styles/globals.css';
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--background);
+    margin: 0;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Wallpoet', sans-serif;
+    font-weight: normal;
+  }
+  main {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+</style>
+
+
+<!-- <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<style>
+			html,
+			body {
+				font-family: system-ui;
+				margin: 0;
+			}
+			body {
+				padding: 2rem;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<Counter client:visible>
+				<h1>Hello, Svelte!</h1>
+			</Counter>
+		</main>
+	</body>
+</html> -->
